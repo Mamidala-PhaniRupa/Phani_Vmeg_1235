@@ -55,6 +55,23 @@ public class Student implements Comparable {
 	}
 
 	public Date getBirthDate() {
+		String d=new String();
+Scanner sn=new Scanner(System.in);
+d=sn.next();
+for(int i=0;i<temp;i++)
+{
+
+//if(d.compareTo(dob[i])==0)
+if(d.equals(dob[i]))
+{
+System.out.print("\n\n");
+System.out.println("student name = "+name[i]);
+System.out.println("student date of birth = "+dob[i]);
+System.out.println("student marks = "+marks[i]);
+System.out.print("\n\n");
+}
+
+}
 		return birthDate;
 	}
 
