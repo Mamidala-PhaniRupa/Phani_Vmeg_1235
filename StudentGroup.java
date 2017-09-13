@@ -1,3 +1,6 @@
+package com.dfs;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -25,54 +28,95 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudents() {
-		// Add your implementation here
-		return null;
+		if(students==null) {
+			throw new IllegalArgumentException();
+		}
+		return students;
 	}
 
 	@Override
-	public void setStudents(Student[] students) {
-		// Add your implementation here
+	public void setStudents(Student[] students) throws IllegalArgumentException{
+		if(students==null) {
+			throw new IllegalArgumentException();
+		}
+		
 	}
 
 	@Override
-	public Student getStudent(int index) {
-		// Add your implementation here
-		return null;
+	public Student getStudent(int index) throws IllegalArgumentException {
+		if(students.length <=0 && students.length>=index) {
+			throw new IllegalArgumentException();
+		}
+		return students[index];
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
-		// Add your implementation here
+		if(students==null) {
+			throw new IllegalArgumentException();
+		}
+		add(student,index);
+	
 	}
 
 	@Override
 	public void addFirst(Student student) {
-		// Add your implementation here
+		if(students==null) {
+			throw new IllegalArgumentException();
+		}
+		add(student,0);
 	}
 
 	@Override
 	public void addLast(Student student) {
-		// Add your implementation here
+		if(students==null) {
+			throw new IllegalArgumentException();
+		}
+		add(student,students.length-1);
 	}
 
 	@Override
 	public void add(Student student, int index) {
-		// Add your implementation here
+		
+		for( int i=0; i<=students.length; i++ ) {
+			students[i] = student;
+			
+			System.out.println(students[i].getFullName());
+		}
+	
+		
 	}
 
 	@Override
 	public void remove(int index) {
-		// Add your implementation here
+		if(students.length <=0 && students.length>=index) {
+			throw new IllegalArgumentException();
+		}
+		for(int i=0; i<students.length; i++)
+	       {
+	           if(students[i] == students[index])
+	           {
+	               for(int j=i; j<(students.length-1); j++)
+	               {
+	            	   students[j] = students[j+1];
+	               }
+	               break;
+	           }
+	       }
 	}
 
 	@Override
 	public void remove(Student student) {
-		// Add your implementation here
+		if(students==null) {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	@Override
 	public void removeFromIndex(int index) {
-		// Add your implementation here
+		if(students.length <=0 && students.length>=index) {
+			throw new IllegalArgumentException();
+		}remove( index);
 	}
 
 	@Override
@@ -92,18 +136,24 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void bubbleSort() {
-		// Add your implementation here
+		
 	}
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
-		// Add your implementation here
-		return null;
+		int indexTo=0;
+		if(date==null) {
+			throw new IllegalArgumentException();
+		}
+		for( int i=0; i<=students.length; i++ ) {
+			if(students[i].getBirthDate()==date)
+				indexTo=i;
+		}
+		return students;
 	}
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
-		// Add your implementation here
 		return null;
 	}
 
@@ -121,19 +171,17 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudentsByAge(int age) {
-		// Add your implementation here
 		return null;
 	}
 
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
-		// Add your implementation here
 		return null;
 	}
 
 	@Override
 	public Student getNextStudent(Student student) {
-		// Add your implementation here
+		
 		return null;
 	}
 }
